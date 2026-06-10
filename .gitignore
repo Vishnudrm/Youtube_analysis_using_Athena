@@ -1,0 +1,58 @@
+# AWS Credentials
+AWS_ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY
+*.pem
+*.key
+.aws/
+credentials
+config
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Environment Variables
+.env
+.env.local
+.env.*.local
+
+# Project Specific
+lambda-pkg/
+lambda_function.zip
+*.json.bak
+output/
+.terraform/
+terraform.tfstate*
+
+# Logs
+*.log
+logs/
