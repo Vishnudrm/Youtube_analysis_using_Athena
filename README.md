@@ -28,52 +28,29 @@ A production-grade serverless ETL solution that:
 ## 🏗️ Architecture Diagram
 
 ```mermaid
-graph TB
-    subgraph "Data Ingestion Layer"
-        A["📁 S3 Raw Bucket<br/>youtube-raw-data-prod"]
-    end
+graph LR
+    A["<b>S3 Raw Bucket</b><br/>youtube-raw-data-prod<br/>📥 JSON Files"] 
+    B["<b>AWS Lambda</b><br/>youtube-category-etl<br/>🐍 Python 3.11"]
+    C["<b>Data Wrangler</b><br/>Transform & Clean<br/>🔄 Pandas"]
+    D["<b>S3 Cleaned Bucket</b><br/>youtube-cleaned-data-prod<br/>📤 Parquet Files"]
+    E["<b>AWS Glue</b><br/>Data Catalog<br/>📚 Schema Registry"]
+    F["<b>Amazon Athena</b><br/>SQL Analytics<br/>🔍 Query Engine"]
+    G["<b>CloudWatch</b><br/>Monitoring<br/>📊 Logs & Metrics"]
     
-    subgraph "Event Trigger"
-        B["🔔 S3 ObjectCreated<br/>Event Notification"]
-    end
+    A -->|Trigger Event| B
+    B -->|Process| C
+    C -->|Write| D
+    D -->|Register| E
+    E -->|Query| F
+    B -->|Log| G
     
-    subgraph "Processing Layer"
-        C["⚡ AWS Lambda<br/>youtube-category-etl"]
-        D["🐍 Python + Pandas<br/>AWS Wrangler"]
-        E["📊 Data Normalization<br/>json_normalize"]
-    end
-    
-    subgraph "Storage Layer"
-        F["📦 S3 Cleaned Bucket<br/>youtube-cleaned-data-prod<br/>Format: Parquet"]
-    end
-    
-    subgraph "Metadata & Query Layer"
-        G["📚 AWS Glue<br/>Data Catalog"]
-        H["🔍 Amazon Athena<br/>SQL Analytics"]
-    end
-    
-    subgraph "Monitoring"
-        I["📊 CloudWatch<br/>Logs & Metrics"]
-    end
-    
-    A -->|New JSON File| B
-    B -->|Trigger| C
-    C -->|Read| D
-    D -->|Transform| E
-    E -->|Write| F
-    F -->|Register Schema| G
-    G -->|Query| H
-    C -->|Log Events| I
-    
-    style A fill:#FF6B35,stroke:#000,stroke-width:3px,color:#fff
-    style B fill:#E74C3C,stroke:#000,stroke-width:3px,color:#fff
-    style C fill:#00BCD4,stroke:#000,stroke-width:3px,color:#000
-    style D fill:#00BCD4,stroke:#000,stroke-width:3px,color:#000
-    style E fill:#00BCD4,stroke:#000,stroke-width:3px,color:#000
-    style F fill:#00D084,stroke:#000,stroke-width:3px,color:#fff
-    style G fill:#2C3E50,stroke:#000,stroke-width:3px,color:#fff
-    style H fill:#9B59B6,stroke:#000,stroke-width:3px,color:#fff
-    style I fill:#FFD700,stroke:#000,stroke-width:3px,color:#000
+    style A fill:#E8961E,stroke:#232F3E,stroke-width:2px,color:#fff,font-size:13px
+    style B fill:#FF9900,stroke:#232F3E,stroke-width:2px,color:#fff,font-size:13px
+    style C fill:#00BCD4,stroke:#232F3E,stroke-width:2px,color:#fff,font-size:13px
+    style D fill:#E8961E,stroke:#232F3E,stroke-width:2px,color:#fff,font-size:13px
+    style E fill:#232F3E,stroke:#232F3E,stroke-width:2px,color:#fff,font-size:13px
+    style F fill:#FF9900,stroke:#232F3E,stroke-width:2px,color:#fff,font-size:13px
+    style G fill:#146EB4,stroke:#232F3E,stroke-width:2px,color:#fff,font-size:13px
 ```
 
 ### Data Transformation Flow
