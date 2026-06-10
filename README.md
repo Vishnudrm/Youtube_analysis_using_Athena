@@ -65,15 +65,15 @@ graph TB
     G -->|Query| H
     C -->|Log Events| I
     
-    style A fill:#FF9900,stroke:#333,color:#000
-    style B fill:#FFA500,stroke:#333,color:#000
-    style C fill:#FF6B35,stroke:#333,color:#fff
-    style D fill:#FF6B35,stroke:#333,color:#fff
-    style E fill:#FF6B35,stroke:#333,color:#fff
-    style F fill:#FFD700,stroke:#333,color:#000
-    style G fill:#4169E1,stroke:#333,color:#fff
-    style H fill:#9370DB,stroke:#333,color:#fff
-    style I fill:#32CD32,stroke:#333,color:#000
+    style A fill:#FF6B35,stroke:#000,stroke-width:3px,color:#fff
+    style B fill:#E74C3C,stroke:#000,stroke-width:3px,color:#fff
+    style C fill:#00BCD4,stroke:#000,stroke-width:3px,color:#000
+    style D fill:#00BCD4,stroke:#000,stroke-width:3px,color:#000
+    style E fill:#00BCD4,stroke:#000,stroke-width:3px,color:#000
+    style F fill:#00D084,stroke:#000,stroke-width:3px,color:#fff
+    style G fill:#2C3E50,stroke:#000,stroke-width:3px,color:#fff
+    style H fill:#9B59B6,stroke:#000,stroke-width:3px,color:#fff
+    style I fill:#FFD700,stroke:#000,stroke-width:3px,color:#000
 ```
 
 ### Data Transformation Flow
